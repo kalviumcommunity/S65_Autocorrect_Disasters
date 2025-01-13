@@ -1,4 +1,4 @@
-# Funniest Autocorrect Disasters
+# Autocorrect Disasters
 
 ## Project Overview
 This is a project to compile some funny autocorrect disasters experienced by users and make it personalized and engaging for each one. The site will collect users' submissions of autocorrect fails and apply a recommendation algorithm to deliver a unique, personalized, and tailored set of fails to each user.
