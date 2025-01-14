@@ -19,3 +19,6 @@ This is a project to compile some funny autocorrect disasters experienced by use
 - **Database -** MongoDB
 - **Authentication -** JWT (JSON Web Tokens)
 - **Hosting -** Vercel
+
+## Why This Project
+This project combines humor and technology, offering a platform that highlights the amusing mishaps of autocorrect. It's valuable as it fosters community engagement through relatable content. By working on this project, you'll enhance your skills in frontend and backend development, user experience design, and personalized recommendation systems, while gaining experience in deploying and scaling web applications.
