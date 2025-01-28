@@ -50,14 +50,3 @@ An interactive web application that collects and shares amusing autocorrect fail
 
 - Secure user authentication
 - Data encryption
-
-## 🤝 Contact
-
-<p align="left"><samp> ~
-   <a href="https://linkedin.com/in/vereoman/" target="_blank">linkedin</a>
-   ·
-   <a href="https://x.com/vereoman" target="_blank">twitter</a>
-   ·
-   <a href="https://gravatar.com/vereoman" target="_blank">website</a>
-   ~ </samp>
-</p>
