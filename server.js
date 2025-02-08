@@ -1,11 +1,16 @@
 const express = require('express');
+const dotenv = require('dotenv');
 const app = express();
 
-app.get('/ping', function (req, res) {
-  res.send('pong');
+app.use(express.json());
+
+dotenv.config();
+
+app.get('/ping', (req, res) => {
+  res.send('Hello World');
 });
 
-const PORT = 6000;
-app.listen(PORT, function () {
-  console.log('Server is running on port ' + PORT);
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
