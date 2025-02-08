@@ -42,4 +42,4 @@ An interactive web application that collects and shares amusing autocorrect fail
 
 ## Deployment Links
 
-- Server deployment - 
+- Server deployment - https://s65-autocorrect-disasters.onrender.com
