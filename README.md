@@ -39,4 +39,3 @@ An interactive web application that collects and shares amusing autocorrect fail
 ## Security & Privacy
 
 - Secure user authentication
-- Data encryption
