@@ -40,3 +40,7 @@ An interactive web application that collects and shares amusing autocorrect fail
 
 - Secure user authentication
 - Data encryption
+
+## Deployment Links
+
+- Server deployment - 
