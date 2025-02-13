@@ -1,4 +1,23 @@
 {
+  "name": "s65_autocorrect_disasters",
+  "version": "1.0.0",
+  "description": "A platform for sharing and discovering humorous autocorrect disasters with personalized recommendations.",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kalviumcommunity/S65_Autocorrect_Disasters.git"
+  },
+  "keywords": [],
+  "author": "arman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kalviumcommunity/S65_Autocorrect_Disasters/issues"
+  },
+  "homepage": "https://github.com/kalviumcommunity/S65_Autocorrect_Disasters#readme",
   "dependencies": {
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
