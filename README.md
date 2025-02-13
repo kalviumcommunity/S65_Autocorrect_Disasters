@@ -14,6 +14,12 @@ npm start
 An interactive web application that collects and shares amusing autocorrect failures, featuring a personalized recommendation system to deliver tailored content to each user.
 
 ## ✨ Key Features
+=======
+## Project Overview
+
+An interactive web application that collects and shares amusing autocorrect failures, featuring a personalized recommendation system to deliver tailored content to each user.
+
+## Key Features
 
 - **Submission System**
   - Easy-to-use interface for uploading autocorrect mishaps
@@ -29,7 +35,7 @@ An interactive web application that collects and shares amusing autocorrect fail
   - Threaded commenting system for discussions
   - Rich user profiles
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
 - React.js for UI components
@@ -61,3 +67,10 @@ An interactive web application that collects and shares amusing autocorrect fail
    <a href="https://gravatar.com/vereoman" target="_blank">website</a>
    ~ </samp>
 </p>
+
+## Security & Privacy
+- Secure user authentication
+- Data encryption
+
+## Deployment Links
+- Server deployment - https://s65-autocorrect-disasters.onrender.com
