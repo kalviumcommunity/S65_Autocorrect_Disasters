@@ -37,7 +37,6 @@ An interactive web application that collects and shares amusing autocorrect fail
 - RESTful API design
 
 ## Security & Privacy
-
 - Secure user authentication
 - Data encryption
 
