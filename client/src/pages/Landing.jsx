@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Image, Heart, MessageCircle } from "lucide-react";
 import backgroundImage from "../assets/codioful-formerly-gradienta-bmbfr43iBog-unsplash.jpg";
-import FeatureCard from "../components/featureCard";
+import FeatureCard from "../components/FeatureCard";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Landing = () => {
