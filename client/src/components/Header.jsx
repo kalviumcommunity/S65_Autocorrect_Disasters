@@ -1,4 +1,3 @@
-import React from 'react';
 import { Home, Image, User, LogIn, UserPlus } from 'lucide-react';
 
 const Header = ({ isSignedIn }) => {
