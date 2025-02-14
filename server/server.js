@@ -3,7 +3,6 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/database');
 const userRoutes = require('./routes/user-route');
 const imageRoutes = require('./routes/image-route');
-const connectDB = require('./config/db');
 
 const app = express();
 
