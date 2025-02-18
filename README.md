@@ -26,14 +26,14 @@ A **community-driven platform** for sharing and discovering **hilarious autocorr
 ## 🛠 Tech Stack  
 
 ### **Frontend**  
-- [React.js](https://react.dev/) – Component-based UI framework  
-- [Tailwind CSS](https://tailwindcss.com/) – Utility-first styling  
-- [Redux](https://redux.js.org/) – State management  
-- [React Router](https://reactrouter.com/) – Navigation  
+- [React.js](https://react.dev/) - Component-based UI framework  
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first styling  
+- [Redux](https://redux.js.org/) - State management  
+- [React Router](https://reactrouter.com/) - Navigation  
 
 ### **Backend**  
-- [Node.js](https://nodejs.org/) + [Express.js](https://expressjs.com/) – RESTful API  
-- [MongoDB](https://www.mongodb.com/) – NoSQL database  
+- [Node.js](https://nodejs.org/) + [Express.js](https://expressjs.com/) - RESTful API  
+- [MongoDB](https://www.mongodb.com/) - NoSQL database  
 - [JWT](https://jwt.io/) - Authentication for secure user sessions  
 
 ## 🔒 Security & Privacy  
