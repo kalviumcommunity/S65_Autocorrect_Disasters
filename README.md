@@ -2,28 +2,28 @@
 
 A **community-driven platform** for sharing and discovering **hilarious autocorrect mishaps**, featuring a **personalized recommendation system** for tailored content delivery.  
 
-## 🚀 Project Overview  
+## Project Overview  
 
 **Autocorrect Disasters** is an interactive web application that curates and showcases amusing autocorrect failures. Users can submit, engage with, and explore content through an intelligent recommendation engine that adapts to their preferences.  
 
-## 🔹 Core Features  
+## Core Features  
 
-### 1️⃣ Content Submission & Discovery  
+### 1️. Content Submission & Discovery  
 - User-friendly interface for **submitting autocorrect fails**  
 - **Multi-format support** for text, images, and GIFs  
 - Advanced **search & filtering options**  
 
-### 2️⃣ Personalization & Recommendations  
+### 2️. Personalization & Recommendations  
 - **AI-driven recommendation engine** for tailored content  
 - **Adaptive content filtering** based on user preferences  
 - Continuous learning from **user interactions and engagement**  
 
-### 3️⃣ Community & Engagement  
+### 3️. Community & Engagement  
 - **Intuitive voting system** to rank the best autocorrect disasters  
 - **Threaded comments** for engaging discussions  
 - **User profiles** with personalized content feeds  
 
-## 🛠 Tech Stack  
+## Tech Stack  
 
 ### **Frontend**  
 - [React.js](https://react.dev/) - Component-based UI framework  
@@ -36,15 +36,15 @@ A **community-driven platform** for sharing and discovering **hilarious autocorr
 - [MongoDB](https://www.mongodb.com/) - NoSQL database  
 - [JWT](https://jwt.io/) - Authentication for secure user sessions  
 
-## 🔒 Security & Privacy  
+## Security & Privacy  
 - **Secure authentication** using JWT  
 - **Data encryption** for sensitive information  
 - **Robust validation & input sanitization**  
 
-## 🚀 Deployment  
+## Deployment  
 
 - **Frontend:** [Live on Vercel](https://autocorrect-disasters.vercel.app)  
 - **Backend:** [Live on Render](https://s65-autocorrect-disasters.onrender.com)  
 
-## 📜 License  
+## License  
 This project is licensed under the **MIT License**.  
