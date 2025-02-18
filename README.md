@@ -34,7 +34,7 @@ A **community-driven platform** for sharing and discovering **hilarious autocorr
 ### **Backend**  
 - [Node.js](https://nodejs.org/) + [Express.js](https://expressjs.com/) – RESTful API  
 - [MongoDB](https://www.mongodb.com/) – NoSQL database  
-- JWT Authentication for secure user sessions  
+- [JWT](https://jwt.io/) Authentication for secure user sessions  
 
 ## 🔒 Security & Privacy  
 - **Secure authentication** using JWT  
