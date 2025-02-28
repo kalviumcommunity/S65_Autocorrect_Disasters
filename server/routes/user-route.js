@@ -1,8 +1,15 @@
-const express = require('express');
+import express from 'express';
+import { registerUser, loginUser, getUserProfile, updateUserProfile, authStatus } from '../controllers/user-controller.js';
+import { verifyToken } from '../middlewares/auth-middleware.js';
+import { uploadMiddleware } from '../config/multer-config.js';
+
 const router = express.Router();
-const userController = require('../controllers/user-controller');
 
-router.post('/users', userController.createUser);
-router.get('/users', userController.getUsers);
+router.post('/signup', uploadMiddleware.single('avatar'), registerUser);
+router.post('/login', loginUser);
+router.get('/profile', verifyToken, getUserProfile);
+router.put('/profile', verifyToken, uploadMiddleware.single('avatar'), updateUserProfile);
 
-module.exports = router;
+router.get('/status', verifyToken, authStatus);
+
+export default router;

@@ -5,6 +5,7 @@ import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
+import Feed from "./pages/Feed";
 
 const ProtectedRoute = ({ children }) => {
   const isAuthenticated = localStorage.getItem("isAuthenticated") === "true";
@@ -50,11 +51,29 @@ const App = () => {
       {!shouldHideHeaderFooter && (
         <Header isSignedIn={isAuthenticated} onSignOut={handleSignOut} />
       )}
+      
       <main className={`flex-grow ${shouldHideHeaderFooter ? "" : "mt-20"}`}>
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/explore" element={<div>Explore Page</div>} />
-          <Route path="/notifications" element={<div>Notifications Page</div>} />
+          
+          <Route 
+            path="/feed" 
+            element={
+              <ProtectedRoute>
+                <Feed />
+              </ProtectedRoute>
+            } 
+          />
+          
+          <Route 
+            path="/notifications" 
+            element={
+              <ProtectedRoute>
+                <div>Notifications Page</div>
+              </ProtectedRoute>
+            } 
+          />
+          
           <Route
             path="/login"
             element={
@@ -63,6 +82,7 @@ const App = () => {
               </PublicRoute>
             }
           />
+          
           <Route
             path="/signup"
             element={
@@ -71,6 +91,7 @@ const App = () => {
               </PublicRoute>
             }
           />
+          
           <Route
             path="/profile"
             element={
@@ -79,6 +100,7 @@ const App = () => {
               </ProtectedRoute>
             }
           />
+          
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>

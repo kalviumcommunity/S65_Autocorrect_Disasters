@@ -14,14 +14,21 @@
   "keywords": [],
   "author": "arman",
   "license": "ISC",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/kalviumcommunity/S65_Autocorrect_Disasters/issues"
   },
   "homepage": "https://github.com/kalviumcommunity/S65_Autocorrect_Disasters#readme",
   "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cloudinary": "^1.41.3",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "mongoose": "^8.10.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.11.0",
+    "multer": "^1.4.5-lts.1",
+    "multer-storage-cloudinary": "^4.0.0",
     "nodemon": "^3.1.9"
   }
 }

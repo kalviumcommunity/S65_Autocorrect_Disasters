@@ -10,30 +10,18 @@ const Signup = ({ setIsAuthenticated }) => {
     const [name, setName] = useState("");
     const [isSeller, setIsSeller] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState("");
     const navigate = useNavigate();
-
-    const formVariants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                duration: 0.5,
-                staggerChildren: 0.1,
-            },
-        },
-    };
-
-    const itemVariants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0 },
-    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setIsLoading(true);
+        setError("");
+        
         try {
             const response = await axios.post(
-                `${import.meta.env.VITE_API_URL}/api/users/signup`,
+                `${import.meta.env.VITE_API_URL}/users/signup`,
                 {
                     email,
                     password,
@@ -54,145 +42,135 @@ const Signup = ({ setIsAuthenticated }) => {
             }
         } catch (error) {
             console.error("Signup error:", error);
-            alert(error.response?.data?.message || "Signup failed");
+            setError(error.response?.data?.message || "Signup failed");
+        } finally {
+            setIsLoading(false);
         }
     };
 
     return (
-        <motion.div
-            className="h-screen w-full flex overflow-hidden"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-        >
-            <div className="w-1/2 bg-white p-8 flex items-center justify-center">
-                <motion.div
-                    className="w-full max-w-md"
-                    variants={formVariants}
-                    initial="hidden"
-                    animate="visible"
-                >
-                    <motion.p variants={itemVariants} className="text-gray-600 mb-8">
-                        Please enter your details
-                    </motion.p>
+        <div className="h-screen flex bg-black">
+            {/* Form side */}
+            <div className="w-1/2 flex items-center justify-center p-8">
+                <div className="w-full max-w-md space-y-6">
+                    <div className="space-y-2">
+                        <h1 className="text-2xl font-semibold tracking-tight text-white">
+                            Create an account
+                        </h1>
+                        <p className="text-sm text-zinc-400">
+                            Enter your information to get started
+                        </p>
+                    </div>
+
+                    {error && (
+                        <div className="p-3 text-sm rounded-md bg-zinc-900 border border-red-900/50 text-red-500">
+                            {error}
+                        </div>
+                    )}
 
                     <form onSubmit={handleSubmit} className="space-y-4">
-                        <motion.div variants={itemVariants}>
-                            <label className="block text-sm mb-2">Name</label>
+                        <div className="space-y-2">
+                            <label htmlFor="name" className="text-sm font-medium text-zinc-200">
+                                Name
+                            </label>
                             <input
+                                id="name"
                                 type="text"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
-                                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent"
+                                className="flex h-10 w-full rounded-md border border-zinc-800 bg-zinc-950 px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-600 focus:outline-none focus:ring-1 focus:ring-zinc-600"
+                                placeholder="John Doe"
                                 required
                             />
-                        </motion.div>
+                        </div>
 
-                        <motion.div variants={itemVariants}>
-                            <label className="block text-sm mb-2">Email address</label>
+                        <div className="space-y-2">
+                            <label htmlFor="email" className="text-sm font-medium text-zinc-200">
+                                Email
+                            </label>
                             <input
+                                id="email"
                                 type="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent"
+                                className="flex h-10 w-full rounded-md border border-zinc-800 bg-zinc-950 px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-600 focus:outline-none focus:ring-1 focus:ring-zinc-600"
+                                placeholder="name@example.com"
                                 required
                             />
-                        </motion.div>
+                        </div>
 
-                        <motion.div variants={itemVariants}>
-                            <label className="block text-sm mb-2">Password</label>
+                        <div className="space-y-2">
+                            <label htmlFor="password" className="text-sm font-medium text-zinc-200">
+                                Password
+                            </label>
                             <div className="relative">
                                 <input
+                                    id="password"
                                     type={showPassword ? "text" : "password"}
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent"
+                                    className="flex h-10 w-full rounded-md border border-zinc-800 bg-zinc-950 px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-600 focus:outline-none focus:ring-1 focus:ring-zinc-600"
+                                    placeholder="••••••••"
                                     required
                                 />
                                 <button
                                     type="button"
                                     onClick={() => setShowPassword(!showPassword)}
-                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-300"
                                 >
                                     {showPassword ? (
-                                        <EyeOff size={20} />
+                                        <EyeOff size={16} className="text-zinc-500" />
                                     ) : (
-                                        <Eye size={20} />
+                                        <Eye size={16} className="text-zinc-500" />
                                     )}
                                 </button>
                             </div>
-                        </motion.div>
+                        </div>
 
-                        <motion.div
-                            variants={itemVariants}
-                            className="flex w-full mt-4 space-x-4"
-                        >
-                            <motion.button
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
-                                type="button"
-                                onClick={() => setIsSeller(false)}
-                                className={`w-full px-4 py-2 rounded-md ${
-                                    !isSeller
-                                        ? "border-2 border-black text-black"
-                                        : "border border-gray-300 text-gray-700 hover:bg-gray-100"
-                                }`}
-                            >
-                                Customer
-                            </motion.button>
-                            <motion.button
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
-                                type="button"
-                                onClick={() => setIsSeller(true)}
-                                className={`w-full px-4 py-2 rounded-md ${
-                                    isSeller
-                                        ? "border-2 border-black text-black"
-                                        : "border border-gray-300 text-gray-700 hover:bg-gray-100"
-                                }`}
-                            >
-                                Seller
-                            </motion.button>
-                        </motion.div>
-
-                        <motion.button
-                            variants={itemVariants}
-                            whileHover={{ scale: 1.02 }}
-                            whileTap={{ scale: 0.98 }}
+                        <button
                             type="submit"
-                            className="w-full bg-black text-white rounded-md py-3 hover:bg-gray-800 transition-colors mt-6"
+                            disabled={isLoading}
+                            className="inline-flex h-10 w-full items-center justify-center rounded-md bg-zinc-900 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-zinc-800 focus:outline-none focus:ring-2 focus:ring-zinc-700 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50"
                         >
-                            Sign up
-                        </motion.button>
+                            {isLoading ? (
+                                <>
+                                    <svg className="mr-2 h-4 w-4 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                    </svg>
+                                    <span>Creating account...</span>
+                                </>
+                            ) : (
+                                "Sign up"
+                            )}
+                        </button>
                     </form>
 
-                    <p className="mt-6 text-center text-sm text-gray-600">
+                    <div className="text-center text-sm text-zinc-400">
                         Already have an account?{" "}
-                        <a
+                        <button
                             onClick={() => navigate("/login")}
-                            className="text-blue-500 hover:underline cursor-pointer"
+                            className="font-medium text-zinc-200 hover:text-white underline-offset-4 hover:underline"
                         >
                             Sign in
-                        </a>
-                    </p>
-                </motion.div>
+                        </button>
+                    </div>
+                </div>
             </div>
 
-            <motion.div
-                className="w-1/2 h-full"
-                initial={{ x: 100, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ duration: 0.7, ease: "easeOut" }}
-            >
+            {/* Image side */}
+            <div className="w-1/2 h-full relative overflow-hidden">
                 <div
-                    className="h-full w-full bg-cover bg-center relative"
+                    className="h-full w-full bg-cover bg-center"
                     style={{
                         backgroundImage:
                             "url('https://images.unsplash.com/photo-1604871000636-074fa5117945?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
                     }}
-                ></div>
-            </motion.div>
-        </motion.div>
+                >
+                    <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent opacity-70"></div>
+                </div>
+            </div>
+        </div>
     );
 };
 
