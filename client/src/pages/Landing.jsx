@@ -1,139 +1,171 @@
-import { useState, useEffect } from "react";
-import { Image, Heart, MessageCircle } from "lucide-react";
-import backgroundImage from "../assets/codioful-formerly-gradienta-bmbfr43iBog-unsplash.jpg";
-import FeatureCard from "../components/FeatureCard";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from 'framer-motion';
+import { Play, Heart, Upload, LogIn, Video, TrendingUp, Search } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import FeaturesCard from '../components/FeatureCard';
 
 const Landing = () => {
-    const features = [
-        {
-            icon: <Image className="w-8 h-8" />,
-            title: "Share Your Fails.",
-            description:
-                "Transform your amusing text exchanges into shareable moments. Join a thousand other users who find humor in these everyday digital mishaps and connect over laughter.",
-        },
-        {
-            icon: <Heart className="w-8 h-8" />,
-            title: "Interact with Friends.",
-            description:
-                "Become part of a vibrant community that celebrates the lighter side of technology. Show appreciation for posts that make you laugh, create collections of your favourites.",
-        },
-        {
-            icon: <MessageCircle className="w-8 h-8" />,
-            title: "Build Connections.",
-            description:
-                "Share your thoughts through our interactive comment system, exchange stories about similar experiences, and participate in weekly trending discussions.",
-        },
-    ];
+  const navigate = useNavigate();
+  
+  const features = [
+    { 
+      icon: <Heart className="w-8 h-8" />, 
+      title: "Share Joy", 
+      description: "Upload your favorite pet moments" 
+    },
+    { 
+      icon: <Video className="w-8 h-8" />, 
+      title: "Watch & Enjoy", 
+      description: "Endless entertainment from pets worldwide" 
+    },
+    { 
+      icon: <TrendingUp className="w-8 h-8" />, 
+      title: "Go Viral", 
+      description: "Let your pet become the next sensation" 
+    }
+  ];
 
-    const heroData = [
-        {
-            title: "Share Hilarious Autocorrect Fails.",
-            description:
-                "Transform embarrassing autocorrect moments into hilarious memories. Share and discover the funniest fails while connecting with others who love a good laugh.",
-        },
-        {
-            title: "Discover Hilarious Chat Mishaps.",
-            description:
-                "Enjoy a collection of hilarious autocorrect fails that will make you laugh and brighten your day. Share, connect, and have fun with these digital mishaps.",
-        },
-    ];
+  const handleStartWatching = () => {
+    navigate('/feed');
+  };
 
-    const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
-
-    useEffect(() => {
-        const intervalId = setInterval(() => {
-            setCurrentHeroIndex((prevIndex) => (prevIndex + 1) % heroData.length);
-        }, 10000);
-
-        return () => clearInterval(intervalId);
-    }, []);
-
-    const currentHero = heroData[currentHeroIndex];
-
-    const heroVariants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                duration: 0.25,
-                ease: "easeOut",
-            },
-        },
-        exit: {
-            opacity: 0,
-            y: -20,
-            transition: {
-                duration: 0.25,
-                ease: "easeIn",
-            },
-        },
-    };
-
-    return (
-        <div className="min-h-screen bg-gradient-to-b from-black to-gray-900 text-white">
-            {/* Hero Section */}
-            <section
-                className="relative pt-20 pb-20 px-4 bg-cover bg-center min-h-[90vh] flex items-center justify-center"
-                style={{
-                    backgroundImage: `url(${backgroundImage})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                }}
-            >
-                <div className="relative max-w-4xl mx-auto text-center">
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={currentHeroIndex}
-                            variants={heroVariants}
-                            initial="hidden"
-                            animate="visible"
-                            exit="exit"
-                        >
-                            <motion.h1 className="text-7xl font-bold mb-6 text-white">
-                                {currentHero.title}
-                            </motion.h1>
-                            <motion.p className="text-l text-gray-100 mb-12 max-w-2xl mx-auto">
-                                {currentHero.description}
-                            </motion.p>
-                            <motion.div className="flex gap-4 justify-center">
-                                <motion.button
-                                    className="bg-white text-black px-8 py-3 rounded-full font-medium hover:bg-gray-100 transition-colors"
-                                    onClick={() => (window.location.href = "/signup")}
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                >
-                                    Get Started
-                                </motion.button>
-                            </motion.div>
-                        </motion.div>
-                    </AnimatePresence>
-                </div>
-            </section>
-
-            {/* Features Section */}
-            <section className="py-20 px-4 bg-black">
-                <div className="max-w-6xl mx-auto text-center">
-                    <h2 className="text-6xl font-bold mb-6 text-white">What Can You Do?</h2>
-                    <p className="text-l text-gray-100 mb-12 max-w-2xl mx-auto">
-                        Our platform offers a comprehensive suite of features designed to help you share, connect, and engage
-                        with a community that appreciates the humor in our daily digital communications.
-                    </p>
-                    <div className="grid md:grid-cols-3 gap-8">
-                        {features.map((feature, index) => (
-                            <FeatureCard
-                                key={index}
-                                icon={feature.icon}
-                                title={feature.title}
-                                description={feature.description}
-                            />
-                        ))}
-                    </div>
-                </div>
-            </section>
+  return (
+    <div className="min-h-screen bg-black text-white">
+      {/* Hero Section with Video Background */}
+      <div className="relative h-screen">
+        {/* Video Background */}
+        <div className="absolute inset-0 w-full h-full">
+          <div className="absolute inset-0 bg-black/50 z-10" />
+          <video 
+            autoPlay 
+            loop 
+            muted 
+            className="w-full h-full object-cover"
+          >
+            <source src="https://videos.pexels.com/video-files/29623310/12747484_640_360_24fps.mp4" type="video/mp4" />
+          </video>
         </div>
-    );
+
+        {/* Navigation */}
+        <motion.nav 
+          initial={{ y: -100 }}
+          animate={{ y: 0 }}
+          className="relative z-20 flex justify-between items-center p-6"
+        >
+          <motion.div 
+            whileHover={{ scale: 1.1 }}
+            className="flex items-center space-x-2"
+          >
+            <Search className="w-8 h-8" />
+            <span className="text-3xl font-bold">PawPlay</span>
+          </motion.div>
+          
+          <div className="flex items-center space-x-6">
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              className="px-6 py-3 border border-white/20 rounded-full backdrop-blur-sm hover:bg-white/10 transition-all"
+            >
+              <LogIn className="w-5 h-5" />
+            </motion.button>
+            
+            <motion.button 
+              whileHover={{ scale: 1.05 }}
+              className="px-6 py-3 bg-white text-black rounded-full flex items-center space-x-2"
+            >
+              <span>Join Now</span>
+            </motion.button>
+          </div>
+        </motion.nav>
+
+        {/* Hero Content */}
+        <div className="relative z-20 h-full flex items-center">
+          <div className="container mx-auto px-4">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="max-w-3xl space-y-8"
+            >
+              <motion.h1 
+                className="text-7xl font-bold leading-tight"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.2 }}
+              >
+                Where Pet Videos
+                <span className="block">Make You Smile</span>
+              </motion.h1>
+
+              <motion.p 
+                className="text-xl text-gray-300"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4 }}
+              >
+                Join our community of pet lovers sharing the most adorable, funny, and heartwarming moments.
+              </motion.p>
+
+              <motion.div 
+                className="flex space-x-4"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.6 }}
+              >
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={handleStartWatching}
+                  className="px-8 py-4 bg-white text-black rounded-full flex items-center space-x-2"
+                >
+                  <Play className="w-5 h-5" />
+                  <span>Start Watching</span>
+                </motion.button>
+                
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="px-8 py-4 border border-white/20 rounded-full flex items-center space-x-2 backdrop-blur-sm hover:bg-white/10"
+                >
+                  <Upload className="w-5 h-5" />
+                  <span>Share Videos</span>
+                </motion.button>
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <motion.div 
+          animate={{ y: [0, 10, 0] }}
+          transition={{ repeat: Infinity, duration: 2 }}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20"
+        >
+          <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+            <div className="w-1 h-2 bg-white rounded-full mt-2" />
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Features Section */}
+      <div className="bg-white text-black py-24">
+        <div className="container mx-auto px-4">
+          <motion.div 
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-12"
+          >
+            {features.map((feature, index) => (
+              <FeaturesCard
+                key={index}
+                icon={feature.icon}
+                title={feature.title}
+                description={feature.description}
+              />
+            ))}
+          </motion.div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Landing;
